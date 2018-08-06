@@ -1,0 +1,43 @@
+**Udacity web server and http course**
+
+```bash
+ncat -l 9999 # In one desktop, this run ncat as a server.
+ncat localhost 9999 # In other desktop, this run ncat as a client. 
+```
+
+
+
+**Request the resource to server using `ncat`**
+
+```bash
+ncat 127.0.0.1 8000
+GET /profile HTTP/1.1
+Host: localhost
+
+# Response from the server is as follows.
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.7.0
+Date: Sun, 05 Aug 2018 10:52:29 GMT
+Content-type: text/html; charset=utf-8
+Content-Length: 2996
+```
+
+HTTP Status code.
+
+- **1xx — Informational.** The request is in progress or there's another step to take.
+- **2xx — Success!** The request succeeded. The server is sending the data the client asked for.
+- **3xx — Redirection.** The server is telling the client a different URI it should redirect to. The headers will usually contain a **Location** header with the updated URI. Different codes tell the client whether a redirect is permanent or temporary.
+- **4xx — Client error.** The server didn't understand the client's request, or can't or won't fill it. Different codes tell the client whether it was a bad URI, a permissions problem, or another sort of error.
+- **5xx — Server error.** Something went wrong on the server side
+
+
+
+**Some HTTP response headers settings**
+
+```
+Cache-Control: public, max_age=259200
+X-Frame-Options: SAMEORIGIN
+```
+
+The HTTP response is made up of three parts: the status line, some headers, and a response body. ![http_response](F:\Resources\WebServers\http_response.png)
+
